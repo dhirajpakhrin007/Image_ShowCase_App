@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:image_showcase_application/provider/image_provider.dart';
+import 'package:image_showcase_application/provider/img_provider.dart';
 import 'package:image_showcase_application/screen/home_page.dart';
 import 'package:provider/provider.dart';
 
