@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(create:  (context) => ApiImageProvider(),
+    return ListenableProvider(
+      create:  (context) => ApiImageProvider(),
       child: MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(

@@ -4,19 +4,21 @@ import '../model/image_showcase_model.dart';
 import '../service/api_service.dart';
 
 class ImageViewModel {
+  final _apiService = ApiService();
 
-  Future<List<Hits>?> getImagesList() async{
-    final res = await ApiService().getAllImages();
-    try {
-      if(res.statusCode == 200) {
-        List data = res.data['hits'];
-      List<Hits> images = data.map((e) => Hits.fromJson(e)).toList();
-      log(images[1].userImageURL.toString());
-      return images;
-      }
-    } catch(e) {
-      throw e;
-    }
+  //for fetching all images
+  Future<List<Hits>> getImagesList() async {
+    List res = await _apiService.getAllImages();
 
+    List<Hits> images = res.map((e) => Hits.fromJson(e)).toList();
+    log(images[0].id.toString(), name: 'id');
+    return images;
+  }
+
+  Future<List<Hits>> getSearchList(String key) async {
+    log(key, name: 'key');
+    List res = await _apiService.getSearchImages(key);
+    List<Hits> images = res.map((e) => Hits.fromJson(e)).toList();
+    return images;
   }
 }
