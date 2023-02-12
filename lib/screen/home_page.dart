@@ -6,8 +6,9 @@ import 'package:image_showcase_application/model/image_showcase_model.dart';
 import 'package:image_showcase_application/repository/get_image_view_model.dart';
 import 'package:provider/provider.dart';
 
-import '../provider/image_provider.dart';
+import '../provider/img_provider.dart';
 import '../service/api_service.dart';
+import 'fav_image.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -55,12 +56,13 @@ class _HomePageState extends State<HomePage> {
           actions: [
             IconButton(
                 onPressed: () {
-                  Provider.of<ApiImageProvider>(context, listen: false)
-                      .clearList();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => FavoriteImage()));
                 },
-                icon: const Icon(
-                  Icons.clear,
-                  color: Colors.black,
+                icon: Icon(
+                  Icons.star,
+                  color: ColorConstant.favColor,
+                  size: 35.0,
                 ))
           ],
         ),
@@ -153,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                   return img.images.isEmpty
                       ? SizedBox()
                       : img.isLoading
-                          ? Center(
+                          ? const Center(
                               child: CircularProgressIndicator(
                               color: Colors.white,
                             ))
@@ -161,30 +163,38 @@ class _HomePageState extends State<HomePage> {
                               child: GridView.builder(
                                 itemCount: img.images.length,
                                 itemBuilder: (context, index) {
-                                  return Column(
-                                    children: [
-                                      Expanded(
-                                        child: Image.network(
-                                          img.images[index].largeImageURL
-                                              .toString(),
-                                          height: img.images[index].imageHeight!
-                                              .toDouble(),
-                                          width: img.images[index].imageWidth!
-                                              .toDouble(),
+                                  return GestureDetector(
+                                    onTap: () {
+                                      img.setFavImgList(
+                                          img.images[index], context);
+                                    },
+                                    child: Column(
+                                      children: [
+                                        Expanded(
+                                          child: Image.network(
+                                            img.images[index].largeImageURL
+                                                .toString(),
+                                            height: img
+                                                .images[index].imageHeight!
+                                                .toDouble(),
+                                            width: img.images[index].imageWidth!
+                                                .toDouble(),
+                                          ),
                                         ),
-                                      ),
-                                      const SizedBox(
-                                        height: 10.0,
-                                      ),
-                                      Text(
-                                        img.images[index].user.toString(),
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      Text(
-                                        img.images[index].imageSize.toString(),
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ],
+                                        const SizedBox(
+                                          height: 10.0,
+                                        ),
+                                        Text(
+                                          img.images[index].user.toString(),
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        Text(
+                                          img.images[index].imageSize
+                                              .toString() + " KB",
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                      ],
+                                    ),
                                   );
                                 },
                                 gridDelegate:
