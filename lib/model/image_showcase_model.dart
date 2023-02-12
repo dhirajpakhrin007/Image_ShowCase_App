@@ -47,28 +47,28 @@ class Hits {
       this.userImageURL});
 
   Hits.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    pageURL = json['pageURL'];
-    type = json['type'];
-    tags = json['tags'];
-    previewURL = json['previewURL'];
-    previewWidth = json['previewWidth'];
-    previewHeight = json['previewHeight'];
-    webformatURL = json['webformatURL'];
-    webformatWidth = json['webformatWidth'];
-    webformatHeight = json['webformatHeight'];
-    largeImageURL = json['largeImageURL'];
-    imageWidth = json['imageWidth'];
-    imageHeight = json['imageHeight'];
-    imageSize = json['imageSize'];
-    views = json['views'];
-    downloads = json['downloads'];
-    collections = json['collections'];
-    likes = json['likes'];
-    comments = json['comments'];
-    userId = json['user_id'];
-    user = json['user'];
-    userImageURL = json['userImageURL'];
+    id = json['id']??"";
+    pageURL = json['pageURL']??"";
+    type = json['type']??"";
+    tags = json['tags']??"";
+    previewURL = json['previewURL']??"";
+    previewWidth = json['previewWidth']??"";
+    previewHeight = json['previewHeight']??"";
+    webformatURL = json['webformatURL']??"";
+    webformatWidth = json['webformatWidth']??"";
+    webformatHeight = json['webformatHeight']??"";
+    largeImageURL = json['largeImageURL']??"";
+    imageWidth = json['imageWidth']??"";
+    imageHeight = json['imageHeight']??"";
+    imageSize = json['imageSize']??"";
+    views = json['views']??"";
+    downloads = json['downloads']??"";
+    collections = json['collections']??"";
+    likes = json['likes']??"";
+    comments = json['comments']??"";
+    userId = json['user_id']??"";
+    user = json['user']??"";
+    userImageURL = json['userImageURL']??"";
   }
 
   Map<String, dynamic> toJson() {
