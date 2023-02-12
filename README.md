@@ -1,16 +1,9 @@
 # image_showcase_application
 
-A new Flutter project.
+Image Showcase App helps to search your favorite images from the pixabay. You can also add the images to your favorite list show that you can watch it later on. Also you can remove the images from the favorite list.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Home Screen
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Favorite Screen
